@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python2.7
 
 ###################################################################################
 ###################################################################################
@@ -11,6 +11,7 @@ import MySQLdb
 import time
 import getpass
 import configparser
+import re
 
 #db = MySQLdb.connect("localhost", "root", "testing1", "backup" )
 
@@ -39,7 +40,18 @@ def Query():
     for row in data :
         return(data)
 
-def displayquery():
-    print(Query())
+def cleanup():
+    cleaner = Query()
+    rx = re.compile('\([^)]*\)')
+    res = rx.sub(' ', cleaner).strip()
+    print(res)
 
-displayquery()    
+
+
+
+
+
+#def displayquery():
+#    print(Query())
+
+cleanup()

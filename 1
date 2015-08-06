@@ -42,13 +42,9 @@ def Query():
 
 def cleanup():
     cleaner = str(Query())
-    rx = re.compile('(?<={)[^}]*(?=})')
-    for value in rx.findall(cleaner):
-        return value
+    rx = re.search('(?<={)[^}]*(?=})', cleaner)
+    print(cleaner)
 
-def assignment():
-    assign = cleanup()
-    print assign
 
 
 
@@ -57,4 +53,4 @@ def assignment():
 #def displayquery():
 #    print(Query())
 
-assignment()
+cleanup()

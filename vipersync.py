@@ -12,20 +12,6 @@ import time
 import re
 import subprocess
 
-#db = MySQLdb.connect("localhost", "root", "testing1", "backup" )
-
-#cursor = db.cursor()
-
-#cursor.execute("SELECT * from altigen")
-
-#data = cursor.fetchall()
-
-#for row in data :
-#    return(row [0], row[1])
-
-
-#db.close()
-
 ###################################
 # Database connection and queries #
 ###################################
@@ -33,15 +19,23 @@ import subprocess
 def Query():
     db = MySQLdb.connect("localhost", "root", "testing1", "backup")
     cursor = db.cursor()
-    cursor.execute("SELECT * from altigen union all select * from crystal union all select * from equipment union all select * from etisql")
+    cursor.execute("INSERT YOUR QUERY HERE")
     data = cursor.fetchall()
     for row in data :
         return(data)
+
+######################################
+# Clean up strings and create a list #
+######################################
 
 def cleanup():
     cleaner = Query()
     rx = re.findall(r'(?<={)([^}]+)', str(cleaner))
     return rx
+
+###################################################################
+# Assign list to rsync commands and launch them one after another #
+###################################################################
 
 def assignment():
     #rcommand = 'rsync --progress %s' % (i)
@@ -51,10 +45,12 @@ def assignment():
         subprocess.Popen(rcommand, shell=True).wait()
     return 0
         
+#################
+# main function #
+#################
 
-
-
-def displayquery():
+def main():
     assignment()
 
-displayquery()
+if __name__ == '__main__':
+    main()

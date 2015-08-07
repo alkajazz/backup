@@ -3,6 +3,14 @@
 ###################################################################################
 ###################################################################################
 #  Python Backup Utility that Schedules Rsync commands based on database entries. #
+#                              Created By Nathan Booth                            #
+#                               nathanbooth@gmail.com                             #
+#                                                                                 #
+#                                                                                 #
+#       Make sure your database entries are inside {} for this to work right      #  
+#                                                                                 #
+#                          EXAMPLE: {/mnt/test /home/test}                        #
+#                                                                                 #
 ###################################################################################
 ###################################################################################
 

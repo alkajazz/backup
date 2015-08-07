@@ -36,15 +36,14 @@ def Query():
     cursor = db.cursor()
     cursor.execute("SELECT * from altigen union all select * from crystal union all select * from equipment union all select * from etisql")
     data = cursor.fetchall()
-    column = []
     for row in data :
         return(data)
 
 def cleanup():
-    cleaner = str(Query())
-    rx = re.compile('(?<={)[^}]*(?=})')
-    for value in rx.findall(cleaner):
-        return value
+    cleaner = Query()
+    rx = re.findall(r'(?<={)([^}]+)', str(cleaner))
+    for row in rx :
+        return(rx)
 
 def assignment():
     assign = cleanup()
@@ -54,7 +53,7 @@ def assignment():
 
 
 
-#def displayquery():
-#    print(Query())
+def displayquery():
+    print(cleanup())
 
-assignment()
+displayquery()

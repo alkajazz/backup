@@ -27,7 +27,7 @@ import subprocess
 def Query():
     db = MySQLdb.connect("localhost", "root", "testing1", "backup")
     cursor = db.cursor()
-    cursor.execute("INSERT YOUR QUERY HERE")
+    cursor.execute("select * from altigen")
     data = cursor.fetchall()
     for row in data :
         return(data)
@@ -46,12 +46,22 @@ def cleanup():
 ###################################################################
 
 def assignment():
-    #rcommand = 'rsync --progress %s' % (i)
     assign = cleanup()
+    timestamp = time.strftime('%m-%d-%y-%I-%M-%S')
+    filename = 'rsync.log'
     for i in assign:
         rcommand = 'rsync --progress %s' % (i)
-        subprocess.Popen(rcommand, shell=True).wait()
-    return 0
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+        if scom == 0:
+            f = open(filename, 'a')
+            f.write('\nBack up job successful at %s' % (timestamp))
+            f.close()
+        else:
+            f = open(filename, 'a')
+            f.write('\nback up failed at %s please check server to restart jobs' % (timestamp))
+            f.close()
+        return 0
+    #return 0
         
 #################
 # main function #

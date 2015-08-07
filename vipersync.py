@@ -9,9 +9,8 @@
 import os
 import MySQLdb
 import time
-import getpass
-import configparser
 import re
+import subprocess
 
 #db = MySQLdb.connect("localhost", "root", "testing1", "backup" )
 
@@ -42,18 +41,20 @@ def Query():
 def cleanup():
     cleaner = Query()
     rx = re.findall(r'(?<={)([^}]+)', str(cleaner))
-    for row in rx :
-        return(rx)
+    return rx
 
 def assignment():
+    #rcommand = 'rsync --progress %s' % (i)
     assign = cleanup()
-    print assign
-
-
+    for i in assign:
+        rcommand = 'rsync --progress %s' % (i)
+        subprocess.Popen(rcommand, shell=True).wait()
+    return 0
+        
 
 
 
 def displayquery():
-    print(cleanup())
+    assignment()
 
 displayquery()

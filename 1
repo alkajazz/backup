@@ -26,18 +26,15 @@ import subprocess
 
 
 def createdict():
-    backuproot = '/home/backups/' 
+    backuproot = ['/home/backups/'] 
     hostnames = ['fileserver1', 'fileserver2', 'fileserver3']
     
-    
     for i in hostnames:
-        cat = '%s%s' % (backuproot,i)
-        catput = cat.split(', ')
-        
-        
-    for f in hostnames:
-        hostname = dict(zip(hostnames, catput))
-        return hostname
+        cat = backuproot + [i]
+        print cat
+    
+    #hostname = dict(zip(hostnames))
+
 
 
 ###################################

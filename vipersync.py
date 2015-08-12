@@ -32,6 +32,15 @@ def Query():
     for row in data :
         return(data)
 
+######################################################
+# dir walk recursively dirs and files and return set #
+######################################################
+
+
+
+
+
+
 ######################################
 # Clean up strings and create a list #
 ######################################
@@ -48,7 +57,7 @@ def cleanup():
 def assignment():
     assign = cleanup()
     timestamp = time.strftime('%m-%d-%y-%I-%M-%S')
-    filename = 'rsync.log'
+    filename = '/mnt/mybox/nbooth/Desktop/rsync.log'
     for i in assign:
         rcommand = 'rsync --progress %s' % (i)
         scom = subprocess.Popen(rcommand, shell=True).wait()

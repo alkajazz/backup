@@ -35,12 +35,19 @@ timetrack = datetime.datetime.today().weekday()
 
 def time():
     
-    if timetrack == 5:
+    f = open("paritytracker.txt", "r+")
+    parity = f.read()
+
+    if parity == timetrack:
+        pass
+    elif timetrack == 5:
         print timetrack + -5
     elif timetrack == 6:
         print timetrack + -5
     else:
-        print timetrack + 1    
+        f = open("paritytracker.txt", "w")
+        f.write(str(timetrack + 1))
+        f.close()
 
 def CreateDest(hostnames):
     

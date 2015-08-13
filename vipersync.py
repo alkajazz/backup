@@ -57,8 +57,6 @@ def CreateDest(hostnames):
     return my_new_list
 
 def CheckExist(dirname):
-     
-    print dirname
     try:
         for i in dirname:
             os.makedirs(i)
@@ -76,6 +74,7 @@ def CreateDict():
 
 def assignment():
     assign = CreateDict()
+    CheckExist(CreateDest(hostnames))
     for k, v in assign.items():
         rcommand = 'rsync -r --progress %s %s' % (k, v)
         scom = subprocess.Popen(rcommand, shell=True).wait()

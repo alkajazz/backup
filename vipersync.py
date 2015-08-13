@@ -24,20 +24,30 @@ import subprocess
 # Globals #
 ###########
 
+backuproot ='/home/backups/'
+hostnames = ['fileserver1', 'fileserver2', 'fileserver3']
 
-def createdict():
-    backuproot = '/home/backups/' 
-    hostnames = ['fileserver1', 'fileserver2', 'fileserver3']
+########################################
+# Create destination from server input #
+########################################
+
+def CreateDest(hostnames):
+    my_new_list = [ backuproot + x for x in hostnames]
+    return my_new_list
+
     
+    #for i in hostnames:
+    #    backuproot.append('%s%s' % (backuproot,i))
     
-    for i in hostnames:
-        cat = '%s%s' % (backuproot,i)
-        catput = cat.split(', ')
-        
-        
-    for f in hostnames:
-        hostname = dict(zip(hostnames, catput))
-        return hostname
+    #dest_table = ''.join(backuproot)
+  
+    #print dest_table 
+  
+  
+  
+  #for f in hostnames:
+    #    hostname = dict(zip(hostnames, catput))
+    #    return hostname
 
 
 ###################################
@@ -103,7 +113,7 @@ def assignment():
 
 def main():
     
-    print createdict()
+    print CreateDest(hostnames)
     
     #assignment()
 

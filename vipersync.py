@@ -25,10 +25,11 @@ import datetime
 # Globals #
 ###########
 
-backuproot ='/home/backups/'
-hostnames = ['mnt/mybox/nbooth/Desktop/fileserver1', 'mnt/mybox/nbooth/Desktop/fileserver2', 'fart/fileserver3', 'test2', 'test3', 'test4']
+backuproot ='/home/backups'
+hostnames = ['/mnt/mybox/nbooth/Desktop/fileserver1', '/mnt/mybox/nbooth/Desktop/fileserver2', '/mnt/mybox/nbooth/Desktop/fileserver3', '/mnt/mybox/nbooth/Desktop/fileserver4']
 ''' 0-6 monday-sunday '''
 timetrack = datetime.datetime.today().weekday()
+
 ########################################
 # Create destination from server input #
 ########################################
@@ -51,7 +52,7 @@ def time():
 
 def CreateDest(hostnames):
     
-    days = ['Monday/', 'Tuesday/', 'Wednesday/', 'Thursday/', 'Friday/', 'Saturday/', 'Sunday/']
+    days = ['/Monday', '/Tuesday', '/Wednesday', '/Thursday', '/Friday', 'Saturday', 'Sunday']
     my_new_list = [ backuproot + days[timetrack] + x for x in hostnames]
     return my_new_list
 
@@ -65,68 +66,41 @@ def CheckExist(dirname):
         if e.errno != errno.EEXIST:
             raise Exception('Error!')
 
-
-#hostname = dict(zip(hostnames, my_new_list))
-#    return hostname
-
-
-###################################
-# Database connection and queries #
-###################################
-
-def Query():
-    #db = MySQLdb.connect("localhost", "root", "testing1", "backup")
-    #cursor = db.cursor()
-    #cursor.execute("select * from altigen")
-    #data = cursor.fetchall()
-    #for row in data :
-    #    return(data)
-    source = '{/mnt/mybox/nbooth/Desktop/fileserver1}'
-
-######################################
-# Clean up strings and create a list #
-######################################
-
-def cleanup():
-    cleaner = Query()
-    rx = re.findall(r'(?<={)([^}]+)', str(cleaner))
-    return rx
+def CreateDict():
+    hostname = dict(zip(hostnames, CreateDest(hostnames)))
+    return hostname
 
 ###################################################################
 # Assign list to rsync commands and launch them one after another #
 ###################################################################
 
 def assignment():
-    assign = cleanup()
-    timestamp = time.strftime('%m-%d-%y-%I-%M-%S')
-    filename = '/mnt/mybox/nbooth/Desktop/rsync.log'
-    for i in assign:
-        rcommand = 'rsync --progress %s' % (i)
+    assign = CreateDict()
+    for k, v in assign.items():
+        rcommand = 'rsync -r --progress %s %s' % (k, v)
         scom = subprocess.Popen(rcommand, shell=True).wait()
-        if scom == 0:
-            f = open(filename, 'a')
-            f.write('\nBack up job successful at %s' % (timestamp))
-            f.close()
-        else:
-            f = open(filename, 'a')
-            f.write('\nback up failed at %s please check server to restart jobs' % (timestamp))
-            f.close()
-        return 0
-    #return 0
-        
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+        scom = subprocess.Popen(rcommand, shell=True).wait()        
+        #if scom == 0:
+        #    f = open(filename, 'a')
+        #    f.write('\nBack up job successful at %s' % (timestamp))
+        #    f.close()
+        #else:
+        #    f = open(filename, 'a')
+        #    f.write('\nback up failed at %s please check server to restart jobs' % (timestamp))
+        #    f.close()
+        #return 0
+    return 0
+       
 #################
 # main function #
 #################
 
 def main():
     
-    time()
+    assignment()
     
-    #DayTrack(backuproot)
-
-    #CheckExist(CreateDest(hostnames))
-    
-    #assignment()
 
 if __name__ == '__main__':
-    main()
+   main()

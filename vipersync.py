@@ -14,27 +14,46 @@
 ###################################################################################
 ###################################################################################
 
-import os
+import os, errno
 import MySQLdb
 import time
 import re
 import subprocess
+import datetime
 
 ###########
 # Globals #
 ###########
 
 backuproot ='/home/backups/'
-hostnames = ['fileserver1', 'fileserver2', 'fileserver3']
-
+hostnames = ['mnt/mybox/nbooth/Desktop/fileserver1', 'mnt/mybox/nbooth/Desktop/fileserver2', 'fart/fileserver3', 'test2', 'test3', 'test4']
+''' 0-6 monday-sunday '''
+timetrack = datetime.datetime.today().weekday()
 ########################################
 # Create destination from server input #
 ########################################
 
 def CreateDest(hostnames):
-    my_new_list = [ backuproot + x for x in hostnames]
-    hostname = dict(zip(hostnames, my_new_list))
-    return hostname
+    
+    days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+    if timetrack == 3:
+        days = 'Thursday/'
+    my_new_list = [ backuproot + days + x for x in hostnames]
+    return my_new_list
+
+def CheckExist(dirname):
+     
+    print dirname
+    try:
+        for i in dirname:
+            os.makedirs(i)
+    except OSError, e:
+        if e.errno != errno.EEXIST:
+            raise Exception('Error!')
+
+
+#hostname = dict(zip(hostnames, my_new_list))
+#    return hostname
 
 
 ###################################
@@ -49,19 +68,6 @@ def Query():
     #for row in data :
     #    return(data)
     source = '{/mnt/mybox/nbooth/Desktop/fileserver1}'
-
-
-
-
-
-######################################################
-# dir walk recursively dirs and files and return set #
-######################################################
-
-
-
-
-
 
 ######################################
 # Clean up strings and create a list #
@@ -100,7 +106,9 @@ def assignment():
 
 def main():
     
-    print CreateDest(hostnames)
+    #DayTrack(backuproot)
+
+    CheckExist(CreateDest(hostnames))
     
     #assignment()
 

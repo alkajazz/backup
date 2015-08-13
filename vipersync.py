@@ -33,21 +33,8 @@ hostnames = ['fileserver1', 'fileserver2', 'fileserver3']
 
 def CreateDest(hostnames):
     my_new_list = [ backuproot + x for x in hostnames]
-    return my_new_list
-
-    
-    #for i in hostnames:
-    #    backuproot.append('%s%s' % (backuproot,i))
-    
-    #dest_table = ''.join(backuproot)
-  
-    #print dest_table 
-  
-  
-  
-  #for f in hostnames:
-    #    hostname = dict(zip(hostnames, catput))
-    #    return hostname
+    hostname = dict(zip(hostnames, my_new_list))
+    return hostname
 
 
 ###################################

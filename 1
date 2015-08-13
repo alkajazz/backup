@@ -35,12 +35,10 @@ timetrack = datetime.datetime.today().weekday()
 
 def time():
     
-    if timetrack == 5:
-        print timetrack + -5
-    elif timetrack == 6:
-        print timetrack + -5
-    else:
-        print timetrack + 1    
+    if timetrack == 0:
+        print timetrack
+    elif timetrack == 3:
+        print 6 + -5
 
 def CreateDest(hostnames):
     

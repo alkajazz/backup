@@ -73,7 +73,7 @@ def CreateDict():
 def IncSource():
     today = '/13'
     month = datetime.datetime.now()
-    Inc_Source = '%s%s%s' % (backuproot, month.strftime("/%m%Y"), today)   
+    Inc_Source = '%s%s%s/*' % (backuproot, month.strftime("/%m%Y"), today)   
     return Inc_Source
 
 #def IncDict():
@@ -91,18 +91,19 @@ def assignment():
     assign = CreateDict()
     IncAss = IncSource()
     CheckExist(CreateDest(hostnames))
-    if t.strftime("%d") == str(14):
-	rcommand = 'rsync -r --progress %s %s' % (IncAss, IncAss)
-        rcommand = re.sub(r'[^/]*$', '%s' % t.strftime("%d"), rcommand)
-        scom = subprocess.Popen(rcommand, shell=True).wait()
-	#print rcommand
-    else:
+    if t.strftime("%d") == str(1):
 	for k, v in assign.items():
 	    rcommand = 'rsync -a --progress %s %s' % (k, v)
 	    rcommand = re.sub(r'[^/]*$', ' ', rcommand)
 	    #scom = subprocess.Popen(rcommand, shell=True).wait()
 	    print rcommand
-    
+    else:
+	rcommand = 'rsync -r --progress %s %s' % (IncAss, IncAss)
+        rcommand = re.sub(r'([^/]*/[^/]*)$', '%s' % t.strftime("%d"), rcommand)
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+	#print rcommand
     #for k, v in assign.items():
 #	if t.strftime("%d") == str(113):
 #		rcommand = 'rsync -a --progress %s %s' % (k, v)

@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-# coding=utf-8 
+
 ###################################################################################
 ###################################################################################
 #  Python Backup Utility that Schedules Rsync commands based on database entries. #
@@ -13,7 +13,7 @@
 #                                                                                 #
 ###################################################################################
 ###################################################################################
-#coding: utf-8
+
 import os, errno
 import time
 import re
@@ -70,11 +70,11 @@ def CreateDict():
     hostname = dict(zip(hostnames, CreateDest(hostnames)))
     return hostname
 
-#def IncSource():
-#    today = '/13'
-#    month = datetime.datetime.now()
-#    Inc_Source = '%s%s%s/*' % (backuproot, month.strftime("/%m%Y"), today)   
-#    return Inc_Source
+def IncSource():
+    today = '/13'
+    month = datetime.datetime.now()
+    Inc_Source = '%s%s%s/*' % (backuproot, month.strftime("/%m%Y"), today)   
+    return Inc_Source
 
 #def IncDict():
 #    hostname = dict((el,el) for el in IncSource) 
@@ -87,10 +87,9 @@ def CreateDict():
 
 #re.sub(r'[^/]*$', ' ')
 def assignment():
-    master = '13'
     t = datetime.datetime.now()
     assign = CreateDict()
-    #IncAss = IncSource()
+    IncAss = IncSource()
     CheckExist(CreateDest(hostnames))
     if t.strftime("%d") == str(1):
 	for k, v in assign.items():
@@ -99,17 +98,12 @@ def assignment():
 	    #scom = subprocess.Popen(rcommand, shell=True).wait()
 	    print rcommand
     else:
-	for k, v in assign.items():
-	# rsync ­avh ­­delete ­­link­dest=/Alpha_Full /Alpha/ /Alpha_2
-	    #rcommand = 'rsync -avh --delete --link-dest= %s %s' % (k, v)
-	    rcommand = 'rsync -avh --delete --link-dest=%s/%s %s %s' % (backuproot, master, k, v)
-            #rcommand = re.sub(r'([^/]*/[^/]*)$', '%s' % t.strftime("%d"), rcommand)
-	    rcommand = re.sub(r'[^/]*$', ' ', rcommand)
-	    #rcommand = re.sub(r'([^/]*/[^/]*)$', '%s' % t.strftime("%d"), rcommand)
-            scom = subprocess.Popen(rcommand, shell=True).wait()
-        #scom = subprocess.Popen(rcommand, shell=True).wait()
-        #scom = subprocess.Popen(rcommand, shell=True).wait()
-	    print rcommand
+	rcommand = 'rsync -r --progress %s %s' % (IncAss, IncAss)
+        rcommand = re.sub(r'([^/]*/[^/]*)$', '%s' % t.strftime("%d"), rcommand)
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+	#print rcommand
     #for k, v in assign.items():
 #	if t.strftime("%d") == str(113):
 #		rcommand = 'rsync -a --progress %s %s' % (k, v)

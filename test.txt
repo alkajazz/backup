@@ -1,0 +1,236 @@
+building file list ... 
+ 0 files...8 files to consider
+backup3/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup3/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup3/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup3/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup3/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup3/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup3/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...8 files to consider
+backup3/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup3/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup3/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup3/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup3/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup3/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup3/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...8 files to consider
+backup3/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup3/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup3/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup3/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup3/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup3/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup3/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...8 files to consider
+backup3/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup3/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup3/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup3/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup3/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup3/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup3/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...8 files to consider
+backup2/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup2/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup2/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup2/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup2/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup2/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup2/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...8 files to consider
+backup2/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup2/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup2/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup2/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup2/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup2/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup2/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...8 files to consider
+backup2/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup2/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup2/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup2/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup2/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup2/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup2/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...8 files to consider
+backup2/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=6/8)
+backup2/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=5/8)
+backup2/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=4/8)
+backup2/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=3/8)
+backup2/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=2/8)
+backup2/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=1/8)
+backup2/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=0/8)
+
+sent 397 bytes  received 174 bytes  1142.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...9 files to consider
+backup1/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=7/9)
+backup1/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=6/9)
+backup1/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=5/9)
+backup1/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=4/9)
+backup1/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=3/9)
+backup1/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=2/9)
+backup1/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=1/9)
+backup1/8
+           0 100%    0.00kB/s    0:00:00 (xfer#8, to-check=0/9)
+
+sent 451 bytes  received 196 bytes  1294.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...9 files to consider
+backup1/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=7/9)
+backup1/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=6/9)
+backup1/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=5/9)
+backup1/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=4/9)
+backup1/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=3/9)
+backup1/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=2/9)
+backup1/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=1/9)
+backup1/8
+           0 100%    0.00kB/s    0:00:00 (xfer#8, to-check=0/9)
+
+sent 451 bytes  received 196 bytes  1294.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...9 files to consider
+backup1/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=7/9)
+backup1/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=6/9)
+backup1/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=5/9)
+backup1/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=4/9)
+backup1/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=3/9)
+backup1/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=2/9)
+backup1/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=1/9)
+backup1/8
+           0 100%    0.00kB/s    0:00:00 (xfer#8, to-check=0/9)
+
+sent 451 bytes  received 196 bytes  1294.00 bytes/sec
+total size is 0  speedup is 0.00
+building file list ... 
+ 0 files...9 files to consider
+backup1/1
+           0 100%    0.00kB/s    0:00:00 (xfer#1, to-check=7/9)
+backup1/2
+           0 100%    0.00kB/s    0:00:00 (xfer#2, to-check=6/9)
+backup1/3
+           0 100%    0.00kB/s    0:00:00 (xfer#3, to-check=5/9)
+backup1/4
+           0 100%    0.00kB/s    0:00:00 (xfer#4, to-check=4/9)
+backup1/5
+           0 100%    0.00kB/s    0:00:00 (xfer#5, to-check=3/9)
+backup1/6
+           0 100%    0.00kB/s    0:00:00 (xfer#6, to-check=2/9)
+backup1/7
+           0 100%    0.00kB/s    0:00:00 (xfer#7, to-check=1/9)
+backup1/8
+           0 100%    0.00kB/s    0:00:00 (xfer#8, to-check=0/9)
+
+sent 451 bytes  received 196 bytes  1294.00 bytes/sec
+total size is 0  speedup is 0.00

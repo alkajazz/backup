@@ -50,8 +50,6 @@ def time():
         f.close()
 
 def CreateDest(hostnames):
-    #for i in hostnames:
-    #	return
     today = datetime.datetime.now()
     days = ['/Monday', '/Tuesday', '/Wednesday', '/Thursday', '/Friday', 'Saturday', 'Sunday']
     my_new_list = [ backuproot + today.strftime("/%m%d%Y") + days[timetrack] + x for x in hostnames]
@@ -73,14 +71,12 @@ def CreateDict():
 # Assign list to rsync commands and launch them one after another #
 ###################################################################
 
-#re.sub(r'[^/]*$', ' ')
 def assignment():
     assign = CreateDict()
     CheckExist(CreateDest(hostnames))
     for k, v in assign.items():
         rcommand = 'rsync -r --progress %s %s' % (k, v)
-        rcommand = re.sub(r'[^/]*$', ' ', rcommand)
-	scom = subprocess.Popen(rcommand, shell=True).wait()
+        scom = subprocess.Popen(rcommand, shell=True).wait()
         #scom = subprocess.Popen(rcommand, shell=True).wait()
         #scom = subprocess.Popen(rcommand, shell=True).wait()
         #scom = subprocess.Popen(rcommand, shell=True).wait()        
@@ -100,8 +96,8 @@ def assignment():
 #################
 
 def main():
-    #print assignment()
-    assignment()
+    print CreateDest(hostnames)
+    #assignment()
     
 
 if __name__ == '__main__':

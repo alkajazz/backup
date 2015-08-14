@@ -1,18 +1,15 @@
 #!/usr/bin/env python2.7
 # coding=utf-8 
-###################################################################################
-###################################################################################
-#  Python Backup Utility that Schedules Rsync commands based on database entries. #
-#                              Created By Nathan Booth                            #
-#                               nathanbooth@gmail.com                             #
-#                                                                                 #
-#                                                                                 #
-#       Make sure your database entries are inside {} for this to work right      #  
-#                                                                                 #
-#                          EXAMPLE: {/mnt/test /home/test}                        #
-#                                                                                 #
-###################################################################################
-###################################################################################
+#################################################################################
+#################################################################################
+#                    		VIPERSYNC                                       #
+#                    	  nathanbooth@gmail.com                                 #
+# 	                                                                        #
+#	     This tool creates incremental snapshots using rsync                #
+#                      Created By: Nathan Booth 2015                            #
+#                                                                               #
+#################################################################################
+#################################################################################
 #coding: utf-8
 import os, errno
 import time
@@ -27,38 +24,19 @@ from datetime import timedelta
 
 backuproot ='/Users/nathanbooth/backups'
 hostnames = ['/Users/nathanbooth/backup1', '/Users/nathanbooth/backup2', '/Users/nathanbooth/backup3']
-''' 0-6 monday-sunday '''
-timetrack = datetime.datetime.today().weekday()
 
 ########################################
 # Create destination from server input #
 ########################################
 
-def time():
-    
-    f = open("paritytracker.txt", "r+")
-    parity = f.read()
-
-    if parity == timetrack:
-        pass
-    elif timetrack == 5:
-        print timetrack + -5
-    elif timetrack == 6:
-        print timetrack + -5
-    else:
-        f = open("paritytracker.txt", "w")
-        f.write(str(timetrack + 1))
-        f.close()
-
 def CreateDest(hostnames):
-    #for i in hostnames:
-    #	return
+    #Read input from hostnames and create list of destinations based on backup root
     today = datetime.datetime.now()
-    days = ['/Monday', '/Tuesday', '/Wednesday', '/Thursday', '/Friday', 'Saturday', 'Sunday']
     my_new_list = [backuproot + today.strftime("/%m%Y") + today.strftime("/%d") + x for x in hostnames]
     return my_new_list
 
 def CheckExist(dirname):
+    #Check to make sure destinations exsist before syncing if not create them if they do except silent error and continue making dirs
     try:
         for i in dirname:
             os.makedirs(i)
@@ -67,72 +45,36 @@ def CheckExist(dirname):
             raise Exception('Error!')
 
 def CreateDict():
+    # Create dictionary that pairs up source with destination
     hostname = dict(zip(hostnames, CreateDest(hostnames)))
     return hostname
-
-#def IncSource():
-#    today = '/13'
-#    month = datetime.datetime.now()
-#    Inc_Source = '%s%s%s/*' % (backuproot, month.strftime("/%m%Y"), today)   
-#    return Inc_Source
-
-#def IncDict():
-#    hostname = dict((el,el) for el in IncSource) 
-    #hostname = {'IncSource': 'IncSource'}
-#    print hostname
 
 ###################################################################
 # Assign list to rsync commands and launch them one after another #
 ###################################################################
 
-#re.sub(r'[^/]*$', ' ')
 def assignment():
+                          # Master key = the day you first runt the program. This will be out full back up day that happens once a month. 
     master = '13'
     t = datetime.datetime.now()
     assign = CreateDict()
-    #IncAss = IncSource()
+    #Run our dir creation function
     CheckExist(CreateDest(hostnames))
+    # if day = master then run full backup rsync command
     if t.strftime("%d") == str(1):
 	for k, v in assign.items():
-	    rcommand = 'rsync -a --progress %s %s' % (k, v)
-	    rcommand = re.sub(r'[^/]*$', ' ', rcommand)
-	    #scom = subprocess.Popen(rcommand, shell=True).wait()
+	    rcommand = 'rsync -aH --progress %s %s' % (k, v)
+	    #rcommand = re.sub(r'[^/]*$', ' ', rcommand)
+	    scom = subprocess.Popen(rcommand, shell=True).wait()
 	    print rcommand
     else:
+	                             # if day doesn't equal master do incremental
 	for k, v in assign.items():
-	# rsync ­avh ­­delete ­­link­dest=/Alpha_Full /Alpha/ /Alpha_2
-	    #rcommand = 'rsync -avh --delete --link-dest= %s %s' % (k, v)
-	    rcommand = 'rsync -avh --delete --link-dest=%s/%s %s %s' % (backuproot, master, k, v)
+	    rcommand = 'rsync -a --delete --log-file=[test] --link-dest=%s/%s/%s %s %s' % (backuproot, t.strftime("%m%Y"), master, k, v)
             #rcommand = re.sub(r'([^/]*/[^/]*)$', '%s' % t.strftime("%d"), rcommand)
 	    rcommand = re.sub(r'[^/]*$', ' ', rcommand)
 	    #rcommand = re.sub(r'([^/]*/[^/]*)$', '%s' % t.strftime("%d"), rcommand)
             scom = subprocess.Popen(rcommand, shell=True).wait()
-        #scom = subprocess.Popen(rcommand, shell=True).wait()
-        #scom = subprocess.Popen(rcommand, shell=True).wait()
-	    print rcommand
-    #for k, v in assign.items():
-#	if t.strftime("%d") == str(113):
-#		rcommand = 'rsync -a --progress %s %s' % (k, v)
-#        	rcommand = re.sub(r'[^/]*$', ' ', rcommand)
-#		print rcommand
-#		#scom = subprocess.Popen(rcommand, shell=True).wait()
-#	else: 
-#		rcommand = 'rsync -r --progress %s %s' % (IncAss, v)
-#        	#rcommand = re.sub(r'[^/]*$', ' ', rcommand)
-#		print rcommand
-		# scom = subprocess.Popen(rcommand, shell=True).wait()
-	#scom = subprocess.Popen(rcommand, shell=True).wait()
-        #scom = subprocess.Popen(rcommand, shell=True).wait()
-        #scom = subprocess.Popen(rcommand, shell=True).wait()        
-        #if scom == 0:
-        #    f = open(filename, 'a')
-        #    f.write('\nBack up job successful at %s' % (timestamp))
-        #    f.close()
-        #else:
-        #    f = open(filename, 'a')
-        #    f.write('\nback up failed at %s please check server to restart jobs' % (timestamp))
-        #    f.close()
-        #return 0
     return 0
        
 #################

@@ -19,6 +19,7 @@ import time
 import re
 import subprocess
 import datetime
+from datetime import timedelta
 
 ###########
 # Globals #
@@ -54,7 +55,7 @@ def CreateDest(hostnames):
     #	return
     today = datetime.datetime.now()
     days = ['/Monday', '/Tuesday', '/Wednesday', '/Thursday', '/Friday', 'Saturday', 'Sunday']
-    my_new_list = [ backuproot + today.strftime("/%m%d%Y") + days[timetrack] + x for x in hostnames]
+    my_new_list = [backuproot + today.strftime("/%m%Y") + today.strftime("/%d") + x for x in hostnames]
     return my_new_list
 
 def CheckExist(dirname):
@@ -69,19 +70,51 @@ def CreateDict():
     hostname = dict(zip(hostnames, CreateDest(hostnames)))
     return hostname
 
+def IncSource():
+    today = '/13'
+    month = datetime.datetime.now()
+    Inc_Source = '%s%s%s' % (backuproot, month.strftime("/%m%Y"), today)   
+    return Inc_Source
+
+#def IncDict():
+#    hostname = dict((el,el) for el in IncSource) 
+    #hostname = {'IncSource': 'IncSource'}
+#    print hostname
+
 ###################################################################
 # Assign list to rsync commands and launch them one after another #
 ###################################################################
 
 #re.sub(r'[^/]*$', ' ')
 def assignment():
+    t = datetime.datetime.now()
     assign = CreateDict()
+    IncAss = IncSource()
     CheckExist(CreateDest(hostnames))
-    for k, v in assign.items():
-        rcommand = 'rsync -r --progress %s %s' % (k, v)
-        rcommand = re.sub(r'[^/]*$', ' ', rcommand)
-	scom = subprocess.Popen(rcommand, shell=True).wait()
-        #scom = subprocess.Popen(rcommand, shell=True).wait()
+    if t.strftime("%d") == str(14):
+	rcommand = 'rsync -r --progress %s %s' % (IncAss, IncAss)
+        rcommand = re.sub(r'[^/]*$', '%s' % t.strftime("%d"), rcommand)
+        scom = subprocess.Popen(rcommand, shell=True).wait()
+	#print rcommand
+    else:
+	for k, v in assign.items():
+	    rcommand = 'rsync -a --progress %s %s' % (k, v)
+	    rcommand = re.sub(r'[^/]*$', ' ', rcommand)
+	    #scom = subprocess.Popen(rcommand, shell=True).wait()
+	    print rcommand
+    
+    #for k, v in assign.items():
+#	if t.strftime("%d") == str(113):
+#		rcommand = 'rsync -a --progress %s %s' % (k, v)
+#        	rcommand = re.sub(r'[^/]*$', ' ', rcommand)
+#		print rcommand
+#		#scom = subprocess.Popen(rcommand, shell=True).wait()
+#	else: 
+#		rcommand = 'rsync -r --progress %s %s' % (IncAss, v)
+#        	#rcommand = re.sub(r'[^/]*$', ' ', rcommand)
+#		print rcommand
+		# scom = subprocess.Popen(rcommand, shell=True).wait()
+	#scom = subprocess.Popen(rcommand, shell=True).wait()
         #scom = subprocess.Popen(rcommand, shell=True).wait()
         #scom = subprocess.Popen(rcommand, shell=True).wait()        
         #if scom == 0:
@@ -101,8 +134,10 @@ def assignment():
 
 def main():
     #print assignment()
+    #print IncSource()
     assignment()
-    
+    #print IncDict()
+    #print CreateDest(hostnames)
 
 if __name__ == '__main__':
    main()

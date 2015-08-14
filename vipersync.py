@@ -27,9 +27,7 @@ import datetime
 backuproot ='/Users/nathanbooth/backups'
 hostnames = ['/Users/nathanbooth/backup1', '/Users/nathanbooth/backup2', '/Users/nathanbooth/backup3']
 ''' 0-6 monday-sunday '''
-
-timetrack = datetime.date.today()
-#timetrack = datetime.datetime.month().today().weekday()
+timetrack = datetime.datetime.today().weekday()
 
 ########################################
 # Create destination from server input #
@@ -52,9 +50,9 @@ def time():
         f.close()
 
 def CreateDest(hostnames):
-    monthcheck = str(datetime.datetime.now().strftime("%y-%m-%d"))
+    
     days = ['/Monday', '/Tuesday', '/Wednesday', '/Thursday', '/Friday', 'Saturday', 'Sunday']
-    my_new_list = [ backuproot + monthcheck + days[timetrack] + x for x in hostnames]
+    my_new_list = [ backuproot + days[timetrack] + x for x in hostnames]
     return my_new_list
 
 def CheckExist(dirname):
@@ -101,7 +99,6 @@ def main():
     
     assignment()
     
-    #print datetime.datetime.now().strftime("%y-%m-%d-%H-%M")
 
 if __name__ == '__main__':
    main()
